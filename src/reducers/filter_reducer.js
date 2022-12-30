@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import {
   LOAD_PRODUCTS,
   SET_LISTVIEW,
@@ -7,11 +8,44 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
-} from '../actions'
+} from "../actions";
 
 const filter_reducer = (state, action) => {
-  return state
-  throw new Error(`No Matching "${action.type}" - action type`)
-}
+  if (action.type === LOAD_PRODUCTS) {
+    return {
+      ...state,
+      all_products: [...action.payload],
+      filtered_products: [...action.payload],
+    };
+  }
+  if (action.type === SET_GRIDVIEW) {
+    return { ...state, grid_view: true };
+  }
+  if (action.type === SET_LISTVIEW) {
+    return { ...state, grid_view: false };
+  }
+  if (action.type === UPDATE_SORT) {
+    return { ...state, sort: action.payload };
+  }
+  if (action.type === SORT_PRODUCTS) {
+    const { sort, filtered_products } = state;
+    let temp_products = [...filtered_products];
+    if (sort === "price-lowest") {
+      temp_products = temp_products.sort((a, b) => a.price - b.price);
+    } else if (sort === "price-highest") {
+      temp_products = temp_products.sort((a, b) => b.price - a.price);
+    } else if (sort === "name-a") {
+      temp_products = temp_products.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    } else if (sort === "name-z") {
+      temp_products = temp_products.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+    }
+    return { ...state, filtered_products: temp_products };
+  }
+  throw new Error(`No Matching "${action.type}" - action type`);
+};
 
-export default filter_reducer
+export default filter_reducer;
