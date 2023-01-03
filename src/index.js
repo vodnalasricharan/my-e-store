@@ -10,13 +10,23 @@ import { UserProvider } from "./context/user_context";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
+//dev-nop25stqpu00rjk3.us.auth0.com
+//4NZPLWAcI4i2BqtibNiKDxRHg8yE4JLf
 root.render(
-  <ProductsProvider>
-    <FilterProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </FilterProvider>
-  </ProductsProvider>
+  <Auth0Provider
+    domain="dev-nop25stqpu00rjk3.us.auth0.com"
+    clientId="4NZPLWAcI4i2BqtibNiKDxRHg8yE4JLf"
+    redirectUri={window.location.origin}
+    cacheLocation="localstorage"
+  >
+    <UserProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </FilterProvider>
+      </ProductsProvider>
+    </UserProvider>
+  </Auth0Provider>
 );
