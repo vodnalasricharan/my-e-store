@@ -1,9 +1,8 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
-import { Children } from "react";
 
-const AuthWrapper = () => {
+const AuthWrapper = ({ children }) => {
   const { isLoading, error } = useAuth0();
   if (isLoading) {
     return (
@@ -19,7 +18,7 @@ const AuthWrapper = () => {
       </Wrapper>
     );
   }
-  return <>{Children}</>;
+  return <>{children}</>;
 };
 
 const Wrapper = styled.section`

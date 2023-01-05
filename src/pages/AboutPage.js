@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { PageHero } from "../components";
-import aboutImg from "../assets/hero-bcg.jpeg";
+import aboutImg from "../assets/my-image.jpeg";
 
 const AboutPage = () => {
   return (
@@ -11,14 +11,17 @@ const AboutPage = () => {
         <img src={aboutImg} alt="nice desk" />
         <article>
           <div className="title">
-            <h2>Our Story</h2>
+            <h2>
+              Hi,<span>I am Sricharan</span>
+            </h2>
             <div className="underline"></div>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-            ratione nemo iste quos, pariatur eveniet accusamus. Odio,
-            voluptatibus repudiandae. Eum pariatur fugit voluptatem itaque
-            doloribus error impedit unde cum quos?
+            This is an duplicate E-commerce ReactJS application. I tried to
+            implement functionalities like <b>filtering,searching,sorting</b>{" "}
+            and many React hooks like
+            <strong>useReducer,useEffect,useState,useContext</strong>, also used{" "}
+            <b>react router.</b>
           </p>
         </article>
       </Wrapper>
@@ -30,7 +33,7 @@ const Wrapper = styled.section`
   display: grid;
   gap: 4rem;
   img {
-    width: 100%;
+    width: 400px;
     display: block;
     border-radius: var(--radius);
     height: 500px;

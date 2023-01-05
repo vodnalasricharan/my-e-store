@@ -7,7 +7,7 @@ import { links } from "../utils/constants";
 import CartButtons from "./CartButtons";
 import { useProductsContext } from "../context/products_context";
 import { useUserContext } from "../context/user_context";
-
+import Logo from "./Logo";
 const Nav = () => {
   const { OpenSidebar } = useProductsContext();
   const { myUser } = useUserContext();
@@ -16,7 +16,8 @@ const Nav = () => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src={logo} alt="logo" />
+            {/* <img src={logo} alt="logo" /> */}
+            <Logo />
           </Link>
           <button type="button" className="nav-toggle" onClick={OpenSidebar}>
             <FaBars />

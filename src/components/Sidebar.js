@@ -7,7 +7,7 @@ import { links } from "../utils/constants";
 import styled from "styled-components";
 import CartButtons from "./CartButtons";
 import { useUserContext } from "../context/user_context";
-
+import Logo from "./Logo";
 const Sidebar = () => {
   const { isSidebarOpen, CloseSidebar } = useProductsContext();
   const { myUser } = useUserContext();
@@ -17,7 +17,8 @@ const Sidebar = () => {
         className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
       >
         <div className="sidebar-header">
-          <img src={logo} className="logo" alt="logo"></img>
+          {/* <img src={logo} className="logo" alt="logo"></img> */}
+          <Logo />
           <button className="close-btn" type="button" onClick={CloseSidebar}>
             <FaTimes />
           </button>
